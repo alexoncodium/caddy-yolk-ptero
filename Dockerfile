@@ -1,5 +1,7 @@
 FROM alpine:latest
 RUN apk add --no-cache bash caddy
-WORKDIR /home/container
-RUN touch /home/container/Caddyfile
-CMD ["bash"]
+WORKDIR /
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+RUN chmod +x /start.sh && /start.sh
+CMD ["/bin/bash", "/entrypoint.sh"]
